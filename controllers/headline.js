@@ -1,9 +1,8 @@
-// Controller for our headlines
-// ============================
+//headlines CONTROLLER
 var db = require("../models");
 
 module.exports = {
-  // Find all headlines, sort them by date, send them back to the user
+  // finds headlines, sorts date, sends to the user
   findAll: function (req, res) {
     db.Headline
       .find(req.query)
@@ -14,7 +13,7 @@ module.exports = {
         res.json(dbHeadline);
       });
   },
-  // Delete the specified headline
+  // delete specified headline
   delete: function (req, res) {
     db.Headline.remove({
       _id: req.params.id
@@ -22,7 +21,7 @@ module.exports = {
       res.json(dbHeadline);
     });
   },
-  // Update the specified headline
+  // update specified headline
   update: function (req, res) {
     db.Headline.findOneAndUpdate({
       _id: req.params.id
